@@ -40,6 +40,34 @@
     <div class="max-w-6xl mx-auto p-6">
       <h2 class="text-3xl font-semibold text-center mb-10" data-aos="fade-up">Projekty</h2>
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- Projekt 1
+        <!-- Projekt 1-->
+
+        <form id="contact-form" method="POST">
+  <input type="text" name="name" placeholder="Imię" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="message" rows="4" placeholder="Wiadomość" required></textarea>
+  <button type="submit">Wyślij</button>
+</form>
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value
+  };
+
+  const response = await fetch("http://localhost:3000/send-message", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) alert("Wiadomość wysłana!");
+  else alert("Coś poszło nie tak...");
+});
+</script>
 
 
