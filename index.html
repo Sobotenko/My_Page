@@ -7,8 +7,7 @@
     <!--<script src="https://cdn.tailwindcss.com"></script>-->
     <link rel="icon" href="assets/img/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script> AOS.init({ duration: 800, once: true }); </script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   </head>
   <body class="bg-gray-50 text-gray-800 font-sans">
 
@@ -32,7 +31,7 @@
         <h2 class="text-3xl font-semibold text-center mb-10" data-aos="fade-up">Projekty</h2>
         <div class="grid md:grid-cols-3 gap-8">
           <div class="bg-white rounded-2xl shadow p-4 hover:shadow-lg hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="100">
-            <img src="assets/img/projekt1.jpg" alt="Optymalizacja sieci dystrybucji" class="rounded-xl mb-4">
+            <img src="assets/img/projekt1.jpg" alt="Optymalizacja sieci dystrybucji" class="rounded-xl mb-4" onerror="this.style.display='none'">
             <h3 class="text-xl font-bold mb-2">Optymalizacja sieci dystrybucji</h3>
             <p class="text-gray-600 text-sm mb-4">
               Stworzyłem narzędzie optymalizacyjne do planowania tras i lokalizacji magazynów, wspierające decyzje biznesowe w logistyce.
@@ -78,33 +77,43 @@
     </footer>
 
     <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-
-      document.getElementById("contact-form").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const data = { name: form.name.value, email: form.email.value, message: form.message.value };
-
-        const getBackendBase = () => {
-          const host = window.location.hostname;
-          if (host === 'localhost' || host === '127.0.0.1') return 'http://localhost:3000';
-          // Production backend URL (Render service). Update if your backend name differs.
-          return 'https://my-page-backend.onrender.com';
-        };
-
-        try {
-          const response = await fetch(`${getBackendBase()}/send-message`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
-
-          if (response.ok) alert('Wiadomość wysłana!');
-          else alert('Coś poszło nie tak...');
-        } catch (err) {
-          console.error(err);
-          alert('Błąd sieci. Spróbuj później.');
+      document.addEventListener('DOMContentLoaded', () => {
+        // Init AOS after DOM ready
+        if (window.AOS && typeof AOS.init === 'function') {
+          AOS.init({ duration: 800, once: true });
         }
+
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        const formEl = document.getElementById('contact-form');
+        if (!formEl) return;
+
+        formEl.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const form = e.target;
+          const data = { name: form.name.value, email: form.email.value, message: form.message.value };
+
+          const getBackendBase = () => {
+            const host = window.location.hostname;
+            if (host === 'localhost' || host === '127.0.0.1') return 'http://localhost:3000';
+            return 'https://my-page-backend.onrender.com';
+          };
+
+          try {
+            const response = await fetch(`${getBackendBase()}/send-message`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            });
+
+            if (response.ok) alert('Wiadomość wysłana!');
+            else alert('Coś poszło nie tak...');
+          } catch (err) {
+            console.error(err);
+            alert('Błąd sieci. Spróbuj później.');
+          }
+        });
       });
     </script>
   </body>
