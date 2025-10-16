@@ -1,190 +1,104 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-<<<<<<< HEAD
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jakub Sobótka — Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="assets/img/favicon.png">
-</head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakub Sobótka — Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="assets/img/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script> AOS.init({ duration: 800, once: true }); </script>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans">
 
-  <!-- HERO -->
-  <header class="min-h-screen flex flex-col justify-center items-center text-center p-6 bg-white">
-    <h1 class="text-5xl font-bold mb-4">Jakub Sobótka</h1>
-    <p class="text-xl text-gray-600 mb-8">
-      Analizyk danych z zacięciem biznesowym, czasami developer, siedzący w SQL i oczarowany GCP
-    </p>
-    <a href="#kontakt" class="bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">Skontaktuj się</a>
-  </header>
+    <header class="min-h-screen flex flex-col justify-center items-center text-center p-6 bg-white" data-aos="fade-up">
+      <h1 class="text-5xl font-bold mb-4">Jakub Sobótka</h1>
+      <p class="text-xl text-gray-600 mb-8">Analizyk danych z zacięciem biznesowym, czasami developer, siedzący w SQL i oczarowany GCP</p>
+      <a href="#kontakt" class="bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">Skontaktuj się</a>
+    </header>
 
-  <!-- O MNIE -->
-  <section id="o-mnie" class="max-w-4xl mx-auto p-8 text-center">
-    <h2 class="text-3xl font-semibold mb-4">O mnie</h2>
-    <p class="text-gray-700 leading-relaxed">
-      Jestem analitykiem biznesowym z pasją do danych wszelkiego rodzaju – od logistycznych po bankowe.  
-      Historycznie logistyk, obecnie wspieram decyzje w banku, analizując procesy i szukając optymalizacji.  
-      SQL, GCP i Excel to moje codzienne narzędzia, a ciekawość biznesowa nigdy nie gaśnie.
-    </p>
-  </section>
-
-  <!-- PROJEKTY -->
-  <section id="projekty" class="bg-gray-100 py-12">
-    <div class="max-w-6xl mx-auto p-6">
-      <h2 class="text-3xl font-semibold text-center mb-10">Projekty</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Projekt 1 -->
-        <div class="bg-white rounded-2xl shadow p-4 hover:shadow-lg transition">
-          <img src="assets/img/projekt1.jpg" alt="Optymalizacja sieci dystrybucji" class="rounded-xl mb-4">
-          <h3 class="text-xl font-bold mb-2">Optymalizacja sieci dystrybucji</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            Stworzyłem narzędzie optymalizacyjne do planowania tras i lokalizacji magazynów, wspierające decyzje biznesowe w logistyce.  
-            W projekcie wykorzystałem SQL, Excel oraz ArcGis Network Analyst, analizując dane przestrzenne i biznesowe, co zwiększyło efektywność operacyjną sieci dystrybucji.
-          </p>
-        </div>
-        <!-- Kolejne projekty można dodać w tym samym formacie -->
-=======
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jakub Sobótka — Portfolio</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({ duration: 800, once: true });
-</script>
-</head>
-<body class="bg-gray-50 text-gray-800 font-sans">
-
-<header class="min-h-screen flex flex-col justify-center items-center text-center p-6 bg-white" data-aos="fade-up">
-  <h1 class="text-5xl font-bold mb-4">Jakub Sobótka</h1>
-  <p class="text-xl text-gray-600 mb-8">Analizyk danych z zacięciem biznesowym, czasami developer, siedzący w SQL i oczarowany GCP</p>
-  <a href="#kontakt" class="bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">Skontaktuj się</a>
-</header>
-
-<section id="o-mnie" class="max-w-4xl mx-auto p-8 text-center" data-aos="fade-up">
-  <h2 class="text-3xl font-semibold mb-4">O mnie</h2>
-  <p class="text-gray-700 leading-relaxed">
-    Jestem analitykiem biznesowym z pasją do danych wszelkiego rodzaju – od logistycznych po bankowe.
-    Historycznie logistyk, obecnie wspieram decyzje w banku, analizując procesy i szukając optymalizacji.
-    SQL, GCP i Excel to moje codzienne narzędzia, a ciekawość biznesowa nigdy nie gaśnie.
-  </p>
-</section>
-
-<section id="projekty" class="bg-gray-100 py-12">
-  <div class="max-w-6xl mx-auto p-6">
-    <h2 class="text-3xl font-semibold text-center mb-10" data-aos="fade-up">Projekty</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-white rounded-2xl shadow p-4 hover:shadow-lg hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="100">
-        <img src="assets/img/projekt1.jpg" alt="Optymalizacja sieci dystrybucji" class="rounded-xl mb-4">
-        <h3 class="text-xl font-bold mb-2">Optymalizacja sieci dystrybucji</h3>
-        <p class="text-gray-600 text-sm mb-4">
-          Stworzyłem narzędzie optymalizacyjne do planowania tras i lokalizacji magazynów, wspierające decyzje biznesowe w logistyce.  
-          W projekcie wykorzystałem SQL, Excel oraz ArcGis Network Analyst, analizując dane przestrzenne i biznesowe, co zwiększyło efektywność operacyjną sieci dystrybucji.
-        </p>
->>>>>>> e446630c1dd0878cc58b5c4689d9f48b21d8358a
-      </div>
-    </div>
-  </div>
-</section>
-
-<<<<<<< HEAD
-  <!-- UMIEJĘTNOŚCI -->
-  <section id="skills" class="max-w-5xl mx-auto py-12 p-6 text-center">
-    <h2 class="text-3xl font-semibold mb-6">Umiejętności</h2>
-    <div class="flex flex-wrap justify-center gap-4 text-gray-700">
-      <span class="px-4 py-2 bg-white rounded-full shadow">SQL</span>
-      <span class="px-4 py-2 bg-white rounded-full shadow">BigQuery</span>
-      <span class="px-4 py-2 bg-white rounded-full shadow">GCP</span>
-      <span class="px-4 py-2 bg-white rounded-full shadow">Analiza procesowa</span>
-      <span class="px-4 py-2 bg-white rounded-full shadow">Analiza biznesowa</span>
-      <span class="px-4 py-2 bg-white rounded-full shadow">Python (lekki)</span>
-      <span class="px-4 py-2 bg-white rounded-full shadow">Jira</span>
-    </div>
-  </section>
-
-  <!-- KONTAKT -->
-  <section id="kontakt" class="bg-white py-12">
-    <div class="max-w-xl mx-auto p-6 text-center">
-      <h2 class="text-3xl font-semibold mb-4">Kontakt</h2>
-      <p class="text-gray-600 mb-8">
-        Masz pytanie, chcesz współpracować lub omówić projekt? Napisz!
+    <section id="o-mnie" class="max-w-4xl mx-auto p-8 text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-semibold mb-4">O mnie</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Jestem analitykiem biznesowym z pasją do danych wszelkiego rodzaju – od logistycznych po bankowe.
+        Historycznie logistyk, obecnie wspieram decyzje w banku, analizując procesy i szukając optymalizacji.
+        SQL, GCP i Excel to moje codzienne narzędzia, a ciekawość biznesowa nigdy nie gaśnie.
       </p>
-      <form action="https://formspree.io/f/your-id" method="POST" class="space-y-4">
-        <input type="text" name="name" placeholder="Imię" required class="w-full border border-gray-300 p-3 rounded">
-        <input type="email" name="email" placeholder="Email" required class="w-full border border-gray-300 p-3 rounded">
-        <textarea name="message" rows="4" placeholder="Wiadomość" required class="w-full border border-gray-300 p-3 rounded"></textarea>
-        <button type="submit" class="bg-gray-900 text-white px-6 py-3 rounded hover:bg-gray-700 transition">Wyślij</button>
-      </form>
-      <p class="mt-4 text-gray-500">Email: <a href="mailto:jakub.sobotka@wp.pl" class="text-blue-600 hover:underline">jakub.sobotka@wp.pl</a></p>
-      <p class="text-gray-500">LinkedIn: <a href="https://www.linkedin.com/in/jakubsob%C3%B3tka/" target="_blank" class="text-blue-600 hover:underline">linkedin.com/in/jakubsobótka</a></p>
-    </div>
-  </section>
+    </section>
 
-  <!-- STOPKA -->
-  <footer class="text-center py-6 text-sm text-gray-500">
-    © <span id="year"></span> Jakub Sobótka. Wszystkie prawa zastrzeżone.
-  </footer>
-=======
-<section id="skills" class="max-w-5xl mx-auto py-12 p-6 text-center" data-aos="fade-up">
-  <h2 class="text-3xl font-semibold mb-6">Umiejętności</h2>
-  <div class="flex flex-wrap justify-center gap-4 text-gray-700">
-    <span class="px-4 py-2 bg-white rounded-full shadow">SQL</span>
-    <span class="px-4 py-2 bg-white rounded-full shadow">BigQuery</span>
-    <span class="px-4 py-2 bg-white rounded-full shadow">GCP</span>
-    <span class="px-4 py-2 bg-white rounded-full shadow">Analiza procesowa</span>
-    <span class="px-4 py-2 bg-white rounded-full shadow">Analiza biznesowa</span>
-    <span class="px-4 py-2 bg-white rounded-full shadow">Python (lekki)</span>
-    <span class="px-4 py-2 bg-white rounded-full shadow">Jira</span>
-  </div>
-</section>
+    <section id="projekty" class="bg-gray-100 py-12">
+      <div class="max-w-6xl mx-auto p-6">
+        <h2 class="text-3xl font-semibold text-center mb-10" data-aos="fade-up">Projekty</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-2xl shadow p-4 hover:shadow-lg hover:scale-105 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="100">
+            <img src="assets/img/projekt1.jpg" alt="Optymalizacja sieci dystrybucji" class="rounded-xl mb-4">
+            <h3 class="text-xl font-bold mb-2">Optymalizacja sieci dystrybucji</h3>
+            <p class="text-gray-600 text-sm mb-4">
+              Stworzyłem narzędzie optymalizacyjne do planowania tras i lokalizacji magazynów, wspierające decyzje biznesowe w logistyce.
+              W projekcie wykorzystałem SQL, Excel oraz ArcGis Network Analyst, analizując dane przestrzenne i biznesowe, co zwiększyło efektywność operacyjną sieci dystrybucji.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="kontakt" class="bg-white py-12" data-aos="fade-up">
-  <div class="max-w-xl mx-auto p-6 text-center">
-    <h2 class="text-3xl font-semibold mb-4">Kontakt</h2>
-    <p class="text-gray-600 mb-8">Masz pytanie lub chcesz współpracować? Napisz!</p>
+    <section id="skills" class="max-w-5xl mx-auto py-12 p-6 text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-semibold mb-6">Umiejętności</h2>
+      <div class="flex flex-wrap justify-center gap-4 text-gray-700">
+        <span class="px-4 py-2 bg-white rounded-full shadow">SQL</span>
+        <span class="px-4 py-2 bg-white rounded-full shadow">BigQuery</span>
+        <span class="px-4 py-2 bg-white rounded-full shadow">GCP</span>
+        <span class="px-4 py-2 bg-white rounded-full shadow">Analiza procesowa</span>
+        <span class="px-4 py-2 bg-white rounded-full shadow">Analiza biznesowa</span>
+        <span class="px-4 py-2 bg-white rounded-full shadow">Python (lekki)</span>
+        <span class="px-4 py-2 bg-white rounded-full shadow">Jira</span>
+      </div>
+    </section>
 
-    <form id="contact-form">
-      <input type="text" name="name" placeholder="Imię" required class="w-full border border-gray-300 p-3 rounded mb-2">
-      <input type="email" name="email" placeholder="Email" required class="w-full border border-gray-300 p-3 rounded mb-2">
-      <textarea name="message" rows="4" placeholder="Wiadomość" required class="w-full border border-gray-300 p-3 rounded mb-2"></textarea>
-      <button type="submit" class="bg-gray-900 text-white px-6 py-3 rounded hover:bg-gray-700 transition">Wyślij</button>
-    </form>
+    <section id="kontakt" class="bg-white py-12" data-aos="fade-up">
+      <div class="max-w-xl mx-auto p-6 text-center">
+        <h2 class="text-3xl font-semibold mb-4">Kontakt</h2>
+        <p class="text-gray-600 mb-8">Masz pytanie lub chcesz współpracować? Napisz!</p>
 
-    <p class="mt-4 text-gray-500">Email: <a href="mailto:jakub.sobotka@wp.pl" class="text-blue-600 hover:underline">jakub.sobotka@wp.pl</a></p>
-    <p class="text-gray-500">LinkedIn: <a href="https://www.linkedin.com/in/jakubsob%C3%B3tka/" target="_blank" class="text-blue-600 hover:underline">linkedin.com/in/jakubsobótka</a></p>
-  </div>
-</section>
+        <form id="contact-form">
+          <input type="text" name="name" placeholder="Imię" required class="w-full border border-gray-300 p-3 rounded mb-2">
+          <input type="email" name="email" placeholder="Email" required class="w-full border border-gray-300 p-3 rounded mb-2">
+          <textarea name="message" rows="4" placeholder="Wiadomość" required class="w-full border border-gray-300 p-3 rounded mb-2"></textarea>
+          <button type="submit" class="bg-gray-900 text-white px-6 py-3 rounded hover:bg-gray-700 transition">Wyślij</button>
+        </form>
 
-<footer class="text-center py-6 text-sm text-gray-500">
-  © <span id="year"></span> Jakub Sobótka. Wszystkie prawa zastrzeżone.
-</footer>
+        <p class="mt-4 text-gray-500">Email: <a href="mailto:jakub.sobotka@wp.pl" class="text-blue-600 hover:underline">jakub.sobotka@wp.pl</a></p>
+        <p class="text-gray-500">LinkedIn: <a href="https://www.linkedin.com/in/jakubsob%C3%B3tka/" target="_blank" class="text-blue-600 hover:underline">linkedin.com/in/jakubsobótka</a></p>
+      </div>
+    </section>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+    <footer class="text-center py-6 text-sm text-gray-500">
+      © <span id="year"></span> Jakub Sobótka. Wszystkie prawa zastrzeżone.
+    </footer>
 
-  document.getElementById("contact-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const data = { name: form.name.value, email: form.email.value, message: form.message.value };
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-    const response = await fetch("http://localhost:3000/send-message", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
+      document.getElementById("contact-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const data = { name: form.name.value, email: form.email.value, message: form.message.value };
 
-    if(response.ok) alert("Wiadomość wysłana!");
-    else alert("Coś poszło nie tak...");
-  });
-</script>
->>>>>>> e446630c1dd0878cc58b5c4689d9f48b21d8358a
+        try {
+          const response = await fetch("http://localhost:3000/send-message", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+          });
 
-</body>
+          if (response.ok) alert("Wiadomość wysłana!");
+          else alert("Coś poszło nie tak...");
+        } catch (err) {
+          console.error(err);
+          alert("Błąd sieci. Spróbuj później.");
+        }
+      });
+    </script>
+  </body>
 </html>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> e446630c1dd0878cc58b5c4689d9f48b21d8358a
