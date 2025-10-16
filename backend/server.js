@@ -2,6 +2,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+require('dotenv').config();
 const app = express();
 
 // Middleware
@@ -17,14 +18,14 @@ app.post('/send-message', async (req, res) => {
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'sobotenko@gmail.com',       // Twój email
-      pass: 'Liceum13ptwsl!',           // App Password dla Gmail
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 
   let mailOptions = {
     from: email,
-    to: 'sobotenko@gmail.com',          // gdzie mają przychodzić wiadomości
+    to: process.env.EMAIL_USER,          // gdzie mają przychodzić wiadomości
     subject: `Wiadomość od ${name}`,
     text: message,
   };
