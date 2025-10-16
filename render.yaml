@@ -1,0 +1,22 @@
+services:
+  # Backend API service
+  - type: web
+    name: my-page-backend
+    env: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+
+  # Frontend static site
+  - type: static
+    name: my-page-frontend
+    buildCommand: null
+    staticPublishPath: ./
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

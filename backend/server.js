@@ -8,7 +8,11 @@ const app = express();
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://my-page-frontend.onrender.com', 'https://my-page-backend.onrender.com']
+    : 'http://localhost:5500'
+}));
 
 // Endpoint dla formularza
 app.post('/send-message', async (req, res) => {
@@ -40,4 +44,5 @@ app.post('/send-message', async (req, res) => {
 });
 
 // Start serwera
-app.listen(3000, () => console.log('Serwer działa na porcie 3000'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Serwer działa na porcie ${PORT}`));
