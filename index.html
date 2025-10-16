@@ -85,18 +85,25 @@
         const form = e.target;
         const data = { name: form.name.value, email: form.email.value, message: form.message.value };
 
+        const getBackendBase = () => {
+          const host = window.location.hostname;
+          if (host === 'localhost' || host === '127.0.0.1') return 'http://localhost:3000';
+          // Production backend URL (Render service). Update if your backend name differs.
+          return 'https://my-page-backend.onrender.com';
+        };
+
         try {
-          const response = await fetch("http://localhost:3000/send-message", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
+          const response = await fetch(`${getBackendBase()}/send-message`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
           });
 
-          if (response.ok) alert("Wiadomość wysłana!");
-          else alert("Coś poszło nie tak...");
+          if (response.ok) alert('Wiadomość wysłana!');
+          else alert('Coś poszło nie tak...');
         } catch (err) {
           console.error(err);
-          alert("Błąd sieci. Spróbuj później.");
+          alert('Błąd sieci. Spróbuj później.');
         }
       });
     </script>
