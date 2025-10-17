@@ -8,18 +8,37 @@ const app = express();
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// CORS setup: allow frontend in prod; allow localhost/file:// in dev
+const isProd = process.env.NODE_ENV === 'production';
+const allowedOrigins = isProd
+  ? ['https://my-page-frontend.onrender.com']
+  : ['http://localhost:5500', 'http://127.0.0.1:5500'];
+
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://my-page-frontend.onrender.com', 'https://my-page-backend.onrender.com']
-    : 'http://localhost:5500'
+  origin: (origin, callback) => {
+    // Allow non-browser or file:// requests (no origin)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('Not allowed by CORS'));
+  }
 }));
+
+// Simple health check
+app.get('/health', (_, res) => {
+  res.json({ ok: true, uptime: process.uptime() });
+});
 
 // Endpoint dla formularza
 app.post('/send-message', async (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, message } = req.body || {};
 
-  // Konfiguracja SMTP - np. Gmail
-  let transporter = nodemailer.createTransport({
+  if (!name || !email || !message) {
+    return res.status(400).json({ ok: false, error: 'Brak wymaganych pól.' });
+  }
+
+  // SMTP (Gmail via App Password)
+  const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER,
@@ -27,19 +46,20 @@ app.post('/send-message', async (req, res) => {
     },
   });
 
-  let mailOptions = {
-    from: email,
-    to: process.env.EMAIL_USER,          // gdzie mają przychodzić wiadomości
-    subject: `Wiadomość od ${name}`,
+  const mailOptions = {
+    from: process.env.EMAIL_USER,       // must be authenticated user for Gmail
+    replyTo: email,                     // user email as reply-to
+    to: process.env.EMAIL_USER,         // your inbox
+    subject: `Wiadomość z formularza: ${name} <${email}>`,
     text: message,
   };
 
   try {
-    await transporter.sendMail(mailOptions);
-    res.status(200).send('Wiadomość wysłana!');
+    const info = await transporter.sendMail(mailOptions);
+    res.status(200).json({ ok: true, id: info.messageId });
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Błąd wysyłki.');
+    console.error('Email send error:', error && error.response || error);
+    res.status(500).json({ ok: false, error: 'Błąd wysyłki' });
   }
 });
 
