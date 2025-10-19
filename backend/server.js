@@ -10,22 +10,29 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // CORS setup: allow frontend in prod; allow localhost/file:// in dev
-const isProd = process.env.NODE_ENV === 'production';
-const allowedOrigins = isProd
-  ? [
-      'https://sobotenko.github.io',
-      'https://my-page-frontend.onrender.com'
-    ]
-  : ['http://localhost:5500', 'http://127.0.0.1:5500', 'null'];
+const allowedOrigins = [
+  'https://sobotenko.github.io',
+  'https://my-page-frontend.onrender.com',
+  'http://localhost:5500',
+  'http://127.0.0.1:5500',
+  'null' // for file:// testing
+];
 
-app.use(cors({
+const corsOptions = {
   origin: (origin, callback) => {
     // Allow non-browser or file:// requests (no origin)
     if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) return callback(null, true);
     return callback(new Error('Not allowed by CORS'));
-  }
-}));
+  },
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
+// Explicitly handle preflight for all routes
+app.options('*', cors(corsOptions));
 
 // Simple health check
 app.get('/health', (_, res) => {
