@@ -1,0 +1,27 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "git-commit-index-cleanup",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-NonInteractive",
+				"-Command",
+				"git add index.html; git commit -m \"Fix index.html: resolve conflicts, dynamic backend URL, inline feedback\"; git push"
+			]
+		},
+		{
+			"label": "git-commit-index-cleanup",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-NonInteractive",
+				"-Command",
+				"git add index.html; git commit -m \"UI: gradient hero + AOS animations (fade/zoom), keep dynamic backend\"; git push"
+			]
+		}
+	]
+}

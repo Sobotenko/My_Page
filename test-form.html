@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Contact Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+  <div class="max-w-md mx-auto bg-white rounded-lg shadow p-6">
+    <h1 class="text-2xl font-bold mb-4">Test Contact Form</h1>
+    <div id="form-result" class="hidden mb-4 text-sm rounded px-3 py-2"></div>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Imię" required class="w-full border p-3 rounded mb-2">
+      <input type="email" name="email" placeholder="Email" required class="w-full border p-3 rounded mb-2">
+      <textarea name="message" rows="4" placeholder="Wiadomość" required class="w-full border p-3 rounded mb-2"></textarea>
+      <button id="submit-btn" type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded hover:opacity-90 w-full">Wyślij</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const resultBox = document.getElementById('form-result');
+      const submitBtn = document.getElementById('submit-btn');
+      const data = { name: form.name.value, email: form.email.value, message: form.message.value };
+
+      submitBtn.disabled = true;
+      const prevText = submitBtn.textContent;
+      submitBtn.textContent = 'Wysyłanie...';
+      resultBox.classList.add('hidden');
+
+      try {
+        const response = await fetch('http://localhost:3000/send-message', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          resultBox.className = 'mb-4 text-sm text-green-700 bg-green-50 border border-green-100 rounded px-3 py-2';
+          resultBox.textContent = 'Wiadomość wysłana! ID: ' + result.id;
+          resultBox.classList.remove('hidden');
+          form.reset();
+        } else {
+          resultBox.className = 'mb-4 text-sm text-red-700 bg-red-50 border border-red-100 rounded px-3 py-2';
+          resultBox.textContent = 'Błąd: ' + (result.error || 'Coś poszło nie tak');
+          resultBox.classList.remove('hidden');
+        }
+      } catch (err) {
+        console.error(err);
+        resultBox.className = 'mb-4 text-sm text-red-700 bg-red-50 border border-red-100 rounded px-3 py-2';
+        resultBox.textContent = 'Błąd sieci: ' + err.message;
+        resultBox.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = prevText;
+      }
+    });
+  </script>
+</body>
+</html>
