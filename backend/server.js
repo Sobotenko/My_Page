@@ -12,7 +12,10 @@ app.use(bodyParser.json());
 // CORS setup: allow frontend in prod; allow localhost/file:// in dev
 const isProd = process.env.NODE_ENV === 'production';
 const allowedOrigins = isProd
-  ? ['https://my-page-frontend.onrender.com']
+  ? [
+      'https://sobotenko.github.io',
+      'https://my-page-frontend.onrender.com'
+    ]
   : ['http://localhost:5500', 'http://127.0.0.1:5500', 'null'];
 
 app.use(cors({
