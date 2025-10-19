@@ -4,8 +4,11 @@ services:
     name: my-page-backend
     env: node
     buildCommand: cd backend && npm install
-    startCommand: cd backend && node server.js
+    startCommand: cd backend && npm start
+    healthCheckPath: /health
     envVars:
+      - key: NODE_VERSION
+        value: 18
       - key: EMAIL_USER
         sync: false
       - key: EMAIL_PASS
